@@ -26,8 +26,9 @@ jobs:
           NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
 
       - name: Simulating publish package on NPM 📦
+        if: github.event_name != 'workflow_dispatch'
         run: pnpm release:dry
 
       - name: publish package on NPM 📦
         if: github.event_name == 'workflow_dispatch'
-        run: pnpm release:dry
+        run: pnpm release
