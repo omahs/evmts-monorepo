@@ -32,7 +32,32 @@
 
 # evmts-monorepo
 
-evmts enables direct evm execution clientside with forge cheat codes and direct solidity file imports. Much of the code is powered by the [ethereumjs monorepo](https://github.com/ethereumjs/ethereumjs-monorepo). It's api is heavily influenced by [forge](https://github.com/foundry-rs/foundry/tree/master/forge) and [wagmi](https://wagmi.sh/react/comparison).
+evmts enables direct evm execution clientside with forge cheat codes and direct solidity file imports.
+
+Enjoy this library? Check out the libraries evmts was built on or inspired by [Foundry](https://github.com/foundry-rs/foundry/tree/master/forge)! [ethereumjs-monorepo](https://github.com/ethereumjs/ethereumjs-monorepo), [wagmi](https://wagmi.sh/react/comparison), [Verifiable rpc](https://github.com/liamzebedee/eth-verifiable-rpc), [Optimism (I work here)](https://github.com/ethereum-optimism/optimism), [helios](https://github.com/a16z/helios)
+
+## Visit [Docs (under construction)](https://evmts-docs-fx6udvub5-evmts.vercel.app/en/getting-started) for docs, guides, API and more!
+
+**This is experimental software not for production use**
+
+Looking to get started building a production-ready dapp? Check out wagmi cli: https://wagmi.sh/cli/create-wagmi. <br />
+Interested in the OP stack and this projects **decentralization roadmap**? You should be! Check out op stack blog here: https://optimism.mirror.xyz/fLk5UGjZDiXFuvQh6R_HscMQuuY9ABYNF7PI76-qJYs
+
+## Quick Features
+
+**If you are reading this these features are not yet implemented. Star and follow this repo for release updates**
+
+- Execute EVM clientside
+- Next generation dapp development stack based on forge
+- Show users events of simulated tx
+- Directly import and execute solidity scripts in javascript
+- Library agnostic plugins for importing solidity in other libraries
+- Automatic multicall support
+- Automatic chain switching
+- Forge cheat codes to bring full power of evm to browser
+- A ts plugin for optimal editor experience
+- Dedicated Devtools (Coming soon)
+- Complete documentation and developer support
 
 ## Packages and apps
 
