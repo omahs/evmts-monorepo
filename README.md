@@ -34,7 +34,7 @@
 
 evmts enables direct evm execution clientside with forge cheat codes and direct solidity file imports.
 
-Enjoy this library? Check out the libraries evmts was built on or inspired by [Foundry](https://github.com/foundry-rs/foundry/tree/master/forge)! [ethereumjs-monorepo](https://github.com/ethereumjs/ethereumjs-monorepo), [wagmi](https://wagmi.sh/react/comparison), [Verifiable rpc](https://github.com/liamzebedee/eth-verifiable-rpc), [Optimism (I work here)](https://github.com/ethereum-optimism/optimism), [helios](https://github.com/a16z/helios)
+Enjoy this library? Check out the libraries evmts was built on or inspired by [Foundry](https://github.com/foundry-rs/foundry/tree/master/forge), [ethereumjs-monorepo](https://github.com/ethereumjs/ethereumjs-monorepo), [wagmi](https://wagmi.sh/react/comparison), [Verifiable rpc](https://github.com/liamzebedee/eth-verifiable-rpc), [Optimism (I work here)](https://github.com/ethereum-optimism/optimism), [helios](https://github.com/a16z/helios)
 
 ## Visit [Docs (under construction)](https://evmts-docs-fx6udvub5-evmts.vercel.app/en/getting-started) for docs, guides, API and more!
 
