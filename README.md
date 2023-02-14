@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  EVM in the browser
+  Execute solidity scripts in browser
 <p>
 
 [![CI](https://github.com/evmts/evmts-monorepo/actions/workflows/tests.yml/badge.svg)](https://github.com/evmts/evmts-monorepo/actions/workflows/tests.yml)
