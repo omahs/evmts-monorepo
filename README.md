@@ -39,11 +39,6 @@ Enjoy this library? Check out the libraries evmts was built on or inspired by [F
 
 ## Visit [Docs (under construction)](https://evmts-docs-fx6udvub5-evmts.vercel.app/en/getting-started) for docs, guides, API and more!
 
-**This is experimental software not for production use**
-
-Looking to get started building a production-ready dapp? Check out wagmi cli: https://wagmi.sh/cli/create-wagmi. <br />
-Interested in the OP stack and this projects **decentralization roadmap**? You should be! Check out op stack blog here: https://optimism.mirror.xyz/fLk5UGjZDiXFuvQh6R_HscMQuuY9ABYNF7PI76-qJYs
-
 ## Quick Features
 
 **If you are reading this these features are not yet implemented. Star and follow this repo for release updates**
@@ -150,4 +145,8 @@ Please see our [contributing.md](/docs/contributing.md).
 
 ## 🚧 WARNING: UNDER CONSTRUCTION 🚧
 
-This project is work in progress and subject to frequent changes
+**This project is work in progress and subject to frequent changes**
+**This is experimental software not for production use**
+
+Looking to get started building a production-ready dapp? Check out wagmi cli: https://wagmi.sh/cli/create-wagmi. <br />
+Interested in the OP stack and this projects **decentralization roadmap**? You should be! Check out op stack blog here: https://optimism.mirror.xyz/fLk5UGjZDiXFuvQh6R_HscMQuuY9ABYNF7PI76-qJYs
