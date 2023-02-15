@@ -54,8 +54,8 @@ async function getContract(
     await fse.readJSON(artifactPath),
   )
   return {
-    artifactPath,
     name: getContractName(artifactPath),
+    artifactPath,
     ...artifact,
     address: deployments[getContractName(artifactPath)],
   }
