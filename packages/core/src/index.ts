@@ -126,8 +126,10 @@ async function deployContract(
   return deploymentResult.createdAddress!
 }
 
-export const run = async (script: string) => {
-  console.log('parsing the abi and byptecode')
+type TODOInfer = any
+
+export const run = async (script: string, args: TODOInfer) => {
+  console.log('parsing the abi and byptecode', args)
   // the babel plugin transforms the template string into this object
   const { abi, bytecode } = script as unknown as {
     abi: JsonFragment[]
