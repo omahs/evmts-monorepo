@@ -60,6 +60,7 @@ async function getContract(
     address: deployments[getContractName(artifactPath)],
   }
 }
+
 export default function envTsPluginRollup(
   options: FoundryOptions = {},
 ): Plugin {
@@ -72,31 +73,9 @@ export default function envTsPluginRollup(
   /**
    * @see wagmis implementation as reference https://github.com/wagmi-dev/wagmi/blob/main/packages/cli/src/plugins/foundry.ts
    */
-  const include = ['*.json']
-  const defaultExcludes = [
-    'Common.sol/**',
-    'Components.sol/**',
-    'Script.sol/**',
-    'StdAssertions.sol/**',
-    'StdError.sol/**',
-    'StdCheats.sol/**',
-    'StdMath.sol/**',
-    'StdJson.sol/**',
-    'StdStorage.sol/**',
-    'StdUtils.sol/**',
-    'Vm.sol/**',
-    'console.sol/**',
-    'console2.sol/**',
-    'test.sol/**',
-    '**.s.sol/*.json',
-    '**.t.sol/*.json',
-  ]
-
   const getArtifactPaths = async (artifactsDirectory: string) => {
-    return globby([
-      ...include.map((x) => `${artifactsDirectory}/**/${x}`),
-      ...defaultExcludes.map((x) => `!${artifactsDirectory}/**/${x}`),
-    ])
+    const include = ['*.json']
+    return globby(include.map((x) => `${artifactsDirectory}/**/${x}`))
   }
 
   return {
@@ -118,7 +97,9 @@ export default function envTsPluginRollup(
           artifactsPath,
           foundryOptions.deployments,
         )
-        if (!contract.abi?.length) continue
+        if (!contract.abi?.length) {
+          continue
+        }
         contracts[artifactsPath] = contract
       }
     },
@@ -131,7 +112,7 @@ export default function envTsPluginRollup(
       const contract = contracts[id]
 
       return `
-        export default ${JSON.stringify(contract)}
+        export default ${JSON.stringify(contract, null, 2)}
       `
     },
   }
