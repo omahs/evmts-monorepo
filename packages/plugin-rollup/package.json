@@ -3,7 +3,7 @@
   "description": "A rollup plugin for evmts",
   "version": "0.0.0",
   "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "module": "dist/index.cjs",
   "types": "src/index.ts",
   "type": "module",
   "license": "MIT",
