@@ -53,7 +53,6 @@ async function getContract(
   deployments: Record<string, string>
 ) {
   const json = await fs.readJSON(artifactPath);
-  console.log("json", json);
   const artifact = forgeArtifactsValidator.parse(json);
   return {
     name: getContractName(artifactPath),
@@ -65,7 +64,6 @@ async function getContract(
 
 export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
   const foundryOptions = forgeOptionsValidator.parse(options);
-  console.log({ foundryOptions });
   const foundryConfig = getFoundryConfig(foundryOptions);
 
   const contracts: Record<string, Awaited<ReturnType<typeof getContract>>> = {};
@@ -88,7 +86,6 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
         foundryOptions.projectRoot,
       ]);
 
-      console.log({ artifactsDir: foundryConfig.out });
       if (!(await fs.pathExists(foundryConfig.out))) {
         throw new Error("artifacts directory does not exist");
       }
