@@ -1,16 +1,16 @@
-import { run } from '@evmts/core'
-import { useQuery } from '@tanstack/react-query'
-import { useState } from 'react'
+import { run } from "@evmts/core";
+import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 // @ts-ignore - TODO make a ts plugin TODO make a global .t.sol module type
-import { PureQuery } from './PureQuery.t.sol'
+import PureQuery from "./PureQuery.t.sol";
 
 export const Pure = () => {
-  const [num1, setNum1] = useState(0)
-  const [num2, setNum2] = useState(0)
+  const [num1, setNum1] = useState(0);
+  const [num2, setNum2] = useState(0);
   const { data } = useQuery([PureQuery.id], async () => {
-    return run(PureQuery, { num1, num2 })
-  })
+    return run(PureQuery, { num1, num2 });
+  });
   return (
     <div>
       <div>Testing a pure query</div>
@@ -22,15 +22,15 @@ export const Pure = () => {
           type="number"
           value={num1}
           onChange={(e) => setNum1(Number(e.target.value))}
-        />{' '}
+        />{" "}
         +
         <input
           type="number"
           value={num2}
           onChange={(e) => setNum2(Number(e.target.value))}
-        />{' '}
+        />{" "}
         =<div>{data}</div>
       </div>
     </div>
-  )
-}
+  );
+};

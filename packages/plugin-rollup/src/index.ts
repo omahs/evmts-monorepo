@@ -2,7 +2,7 @@ import { execa } from "execa";
 // @ts-ignore - TODO figure out why these types don't work
 import fs from "fs-extra/esm";
 import { globby } from "globby";
-import { basename, extname, join } from "pathe";
+import { basename, extname } from "pathe";
 import type { Plugin } from "rollup";
 import { z } from "zod";
 
@@ -101,6 +101,9 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
         contracts[artifactsPath] = contract;
       }
     },
+    resolveId(id) {
+      return id;
+    },
     load(id) {
       if (!id.endsWith(".sol")) {
         return;
@@ -109,9 +112,11 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
 
       const contract = contracts[id];
 
-      return `
+      const out = `
         export default ${JSON.stringify(contract, null, 2)}
       `;
+      console.log("rollup complete", out);
+      return out;
     },
   };
 }
