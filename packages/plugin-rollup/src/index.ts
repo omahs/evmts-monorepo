@@ -29,14 +29,16 @@ export const forgeArtifactsValidator = z.object({
         })
       ),
       name: z.string(),
-      outputs: z.array(
-        z.object({
-          internalType: z.string(),
-          name: z.string(),
-          type: z.string(),
-        })
-      ),
-      stateMutability: z.string(),
+      outputs: z
+        .array(
+          z.object({
+            internalType: z.string(),
+            name: z.string(),
+            type: z.string(),
+          })
+        )
+        .optional(),
+      stateMutability: z.string().optional(),
       type: z.string(),
     })
   ),
@@ -50,9 +52,9 @@ async function getContract(
   artifactPath: string,
   deployments: Record<string, string>
 ) {
-  const artifact = forgeArtifactsValidator.parse(
-    await fs.readJSON(artifactPath)
-  );
+  const json = await fs.readJSON(artifactPath);
+  console.log("json", json);
+  const artifact = forgeArtifactsValidator.parse(json);
   return {
     name: getContractName(artifactPath),
     artifactPath,
