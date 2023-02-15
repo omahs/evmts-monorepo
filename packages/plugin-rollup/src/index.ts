@@ -98,11 +98,12 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
         if (!contract.abi?.length) {
           continue;
         }
-        contracts[artifactsPath] = contract;
+        const contractName = artifactsPath.split("/").at(-2);
+        if (!contractName) {
+          throw new Error("contract name not found");
+        }
+        contracts[contractName] = contract;
       }
-    },
-    resolveId(id) {
-      return id;
     },
     load(id) {
       if (!id.endsWith(".sol")) {
@@ -110,12 +111,14 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
       }
       console.log("loading solidity file", { id });
 
-      const contract = contracts[id];
+      const contractName = id.split("/").at(-1);
+
+      const contract = contracts[contractName];
 
       const out = `
         export default ${JSON.stringify(contract, null, 2)}
       `;
-      console.log("rollup complete", out);
+      console.log({ out, id, keys: Object.keys(contracts) });
       return out;
     },
   };
