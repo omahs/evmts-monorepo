@@ -1,22 +1,25 @@
-import { envTsPluginRollup } from '@evmts/plugin-rollup'
-import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
-import react from '@vitejs/plugin-react'
-import { defineConfig } from 'vitest/config'
+import { envTsPluginRollup } from "@evmts/plugin-rollup";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vitest/config";
 
 /**
  * @see https://vitejs.dev/config/
  */
 export default defineConfig({
   build: {
-    outDir: 'dist',
+    outDir: "dist",
   },
   resolve: {},
   test: {
-    environment: 'jsdom',
+    environment: "jsdom",
   },
   plugins: [
-    react({ babel: { configFile: './babel.config.js' } }),
+    react({ babel: { configFile: "./babel.config.js" } }),
     vanillaExtractPlugin(),
-    envTsPluginRollup(),
+    envTsPluginRollup({
+      forgeExecutable: "forge",
+      projectRoot: __dirname,
+    }),
   ],
-})
+});

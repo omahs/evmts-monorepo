@@ -63,8 +63,8 @@ async function getContract(
 
 export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
   const foundryOptions = forgeOptionsValidator.parse(options);
+  console.log({ foundryOptions });
   const foundryConfig = getFoundryConfig(foundryOptions);
-  const artifactsDir = join(foundryOptions.projectRoot, foundryConfig.out);
 
   const contracts: Record<string, Awaited<ReturnType<typeof getContract>>> = {};
 
@@ -86,10 +86,11 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
         foundryOptions.projectRoot,
       ]);
 
-      if (!(await fs.pathExists(artifactsDir))) {
+      console.log({ artifactsDir: foundryConfig.out });
+      if (!(await fs.pathExists(foundryConfig.out))) {
         throw new Error("artifacts directory does not exist");
       }
-      const artifactsPaths = await getArtifactPaths(artifactsDir);
+      const artifactsPaths = await getArtifactPaths(foundryConfig.out);
       for (const artifactsPath of artifactsPaths) {
         const contract = await getContract(
           artifactsPath,
