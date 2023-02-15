@@ -1,4 +1,4 @@
-import path = require("pathe");
+import path from "pathe";
 import { execaCommandSync } from "execa";
 import { z } from "zod";
 
