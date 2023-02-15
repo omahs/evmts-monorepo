@@ -91,6 +91,7 @@ export default function envTsPluginRollup(
     '**.s.sol/*.json',
     '**.t.sol/*.json',
   ]
+
   const getArtifactPaths = async (artifactsDirectory: string) => {
     return globby([
       ...include.map((x) => `${artifactsDirectory}/**/${x}`),
@@ -100,6 +101,7 @@ export default function envTsPluginRollup(
 
   return {
     name: '@evmts/plugin-rollup',
+    version: '0.0.0',
     buildStart: async () => {
       await execa(foundryOptions.forgeExecutable, [
         'build',
@@ -119,12 +121,6 @@ export default function envTsPluginRollup(
         if (!contract.abi?.length) continue
         contracts[artifactsPath] = contract
       }
-    },
-    resolveId(id, importer) {
-      if (!id.endsWith('.sol')) {
-        return
-      }
-      console.log('new solidity file', { id, importer })
     },
     load(id) {
       if (!id.endsWith('.sol')) {
