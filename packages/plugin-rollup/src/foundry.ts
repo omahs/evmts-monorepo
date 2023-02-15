@@ -18,6 +18,7 @@ export const forgeOptionsValidator = z.object({
     .optional()
     .default(process.cwd())
     .describe('path to project root'),
+  deployments: z.record(z.string()).optional().default({}),
 })
 
 export type FoundryOptions = Partial<z.infer<typeof forgeOptionsValidator>>
