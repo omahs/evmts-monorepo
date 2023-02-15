@@ -8,8 +8,8 @@
     "build": "vite build",
     "serve": "serve -s -l tcp://0.0.0.0:3000 dist",
     "test": "vitest",
-    "lint": "eslint \"**/*.{ts,tsx}\" --fix && prettier \"**/*.{ts,tsx}\" --write --loglevel=warn",
-    "lint:check": "eslint \"**/*.{ts,tsx}\" && prettier --check \"**/*.{ts,tsx}\"",
+    "lint": "rome check . --apply-suggested",
+    "lint:check": "rome check .",
     "preview": "vite preview"
   },
   "dependencies": {

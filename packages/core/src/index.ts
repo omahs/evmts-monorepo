@@ -70,7 +70,7 @@ export const encodeDeployment = (
     values: unknown[]
   },
 ) => {
-  const deploymentData = '0x' + bytecode
+  const deploymentData = `0x${bytecode}`
   if (params) {
     const argumentsEncoded = AbiCoder.encode(params.types, params.values)
     return deploymentData + argumentsEncoded.slice(2)
@@ -159,8 +159,6 @@ export const run = async (script: string, args: TODOInfer) => {
   await insertAccount(vm, accountAddress)
 
   console.log('deploying contract')
-  // eslint-disable-next-line no-debugger
-  debugger // broken here atm
   const contractAddress = await deployContract(
     vm,
     accountPk,
