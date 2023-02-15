@@ -60,6 +60,7 @@
     "@rollup/pluginutils": "^5.0.2",
     "@types/babel-core": "^6.25.7",
     "ethers": "^6.0.2",
+    "execa": "^7.0.0",
     "rollup": "^3.15.0"
   }
 }

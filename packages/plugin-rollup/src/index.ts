@@ -1,5 +1,11 @@
+import { execaCommandSync } from 'execa'
 import type { Plugin } from 'rollup'
 import { z } from 'zod'
+
+const foundryConfigValidator = z.object({
+  out: z.string().default('out'),
+  src: z.string().default('src'),
+})
 
 const optionsValidator = z.object({
   forgeExecutable: z
@@ -18,6 +24,12 @@ type Options = Partial<z.infer<typeof optionsValidator>>
 
 export default function envTsPluginRollup(options: Options = {}): Plugin {
   const { forgeExecutable, projectRoot } = optionsValidator.parse(options)
+  const config = foundryConfigValidator.parse(
+    JSON.parse(
+      execaCommandSync(`${forgeExecutable} config --json --root ${projectRoot}`)
+        .stdout,
+    ),
+  )
   return {
     name: '@evmts/plugin-rollup',
     resolveId(id, importer) {
