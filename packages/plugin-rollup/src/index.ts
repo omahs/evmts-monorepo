@@ -1,35 +1,15 @@
-import { execaCommandSync } from 'execa'
+import path = require('path')
 import type { Plugin } from 'rollup'
-import { z } from 'zod'
 
-const foundryConfigValidator = z.object({
-  out: z.string().default('out'),
-  src: z.string().default('src'),
-})
+import type { FoundryOptions } from './foundry'
+import { forgeOptionsValidator, getFoundryConfig } from './foundry'
 
-const optionsValidator = z.object({
-  forgeExecutable: z
-    .string()
-    .optional()
-    .default('forge')
-    .describe('path to forge executable'),
-  projectRoot: z
-    .string()
-    .optional()
-    .default(process.cwd())
-    .describe('path to project root'),
-})
-
-type Options = Partial<z.infer<typeof optionsValidator>>
-
-export default function envTsPluginRollup(options: Options = {}): Plugin {
-  const { forgeExecutable, projectRoot } = optionsValidator.parse(options)
-  const config = foundryConfigValidator.parse(
-    JSON.parse(
-      execaCommandSync(`${forgeExecutable} config --json --root ${projectRoot}`)
-        .stdout,
-    ),
-  )
+export default function envTsPluginRollup(
+  options: FoundryOptions = {},
+): Plugin {
+  const foundryOptions = forgeOptionsValidator.parse(options)
+  const foundryConfig = getFoundryConfig(foundryOptions)
+  const artifactsDir = path.join(foundryOptions.projectRoot, foundryConfig.out)
   return {
     name: '@evmts/plugin-rollup',
     resolveId(id, importer) {
