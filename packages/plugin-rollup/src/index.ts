@@ -61,9 +61,7 @@ async function getContract(
   }
 }
 
-export default function envTsPluginRollup(
-  options: FoundryOptions = {},
-): Plugin {
+export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
   const foundryOptions = forgeOptionsValidator.parse(options)
   const foundryConfig = getFoundryConfig(foundryOptions)
   const artifactsDir = path.join(foundryOptions.projectRoot, foundryConfig.out)
