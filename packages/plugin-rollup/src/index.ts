@@ -1,5 +1,6 @@
 import { execa } from "execa";
-import * as fse from "fs-extra";
+// @ts-ignore - TODO figure out why these types don't work
+import fs from "fs-extra/esm";
 import { globby } from "globby";
 import { basename, extname, join } from "pathe";
 import type { Plugin } from "rollup";
@@ -50,7 +51,7 @@ async function getContract(
   deployments: Record<string, string>
 ) {
   const artifact = forgeArtifactsValidator.parse(
-    await fse.readJSON(artifactPath)
+    await fs.readJSON(artifactPath)
   );
   return {
     name: getContractName(artifactPath),
@@ -85,7 +86,7 @@ export function envTsPluginRollup(options: FoundryOptions = {}): Plugin {
         foundryOptions.projectRoot,
       ]);
 
-      if (!fse.existsSync(artifactsDir)) {
+      if (!(await fs.pathExists(artifactsDir))) {
         throw new Error("artifacts directory does not exist");
       }
       const artifactsPaths = await getArtifactPaths(artifactsDir);

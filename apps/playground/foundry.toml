@@ -1,6 +1,7 @@
 [profile.default]
 src = 'src'
 out = 'artifacts'
+lib = 'lib'
 test = 'src'
 no_match_test = "FFI|LongRunning"
 optimizer = true
