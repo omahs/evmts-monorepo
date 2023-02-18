@@ -17,7 +17,7 @@ const common = new Common({
 	hardfork: Hardfork.Istanbul,
 });
 const block = Block.fromBlockData(
-	{ header: { extraData: Buffer.alloc(97) } },
+	{ header: { extraData: Buffer.alloc(97),  } },
 	{ common },
 );
 
@@ -159,6 +159,7 @@ export const run = async (
 		 * - `hardfork`: `merge`
 		 * - `eips`: `[]`
 		 */
+		common,
 		// common?: Common
 		/**
 		 * A {@link StateManager} instance to use as the state store
@@ -238,8 +239,8 @@ export const run = async (
 	console.log({ sigHash });
 	const result = await vm.evm.runCall({
 		to: contractAddress,
-		caller: wallet.address,
-		origin: wallet.address,
+		caller: address,
+		origin: address,
 		data: Buffer.from(sigHash.slice(2), "hex"),
 		block,
 	});
