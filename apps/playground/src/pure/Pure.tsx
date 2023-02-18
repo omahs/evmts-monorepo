@@ -8,7 +8,7 @@ import PureQuery from "./PureQuery.t.sol";
 export const Pure = () => {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
-  const { data } = useQuery([PureQuery.id], async () => {
+  const { data } = useQuery([PureQuery.id, num1, num2], async () => {
     return run(PureQuery, { num1, num2 });
   });
   return (
