@@ -342,6 +342,7 @@ importers:
       '@ethersproject/abi': ^5.7.0
       '@types/babel-core': ^6.25.7
       '@vitest/ui': ^0.28.4
+      ethers: ^6.0.4
       tsup: ^6.6.0
       typescript: ^4.9.5
       vitest: ^0.28.4
@@ -355,6 +356,7 @@ importers:
       '@ethereumjs/vm': 6.3.0
       '@ethersproject/abi': 5.7.0
       '@types/babel-core': 6.25.7
+      ethers: 6.0.4
     devDependencies:
       '@vitest/ui': 0.28.4
       tsup: 6.6.0_typescript@4.9.5
@@ -9347,6 +9349,21 @@ packages:
 
   /ethers/6.0.2:
     resolution: {integrity: sha512-YOHvShFjKordVEN7kVcKRp6xhpjq4ggZPcsAVuadXravZ7Z4qOflOEGfIaMnKp2ZQJqyR07iYVD6YVty4dI3Fw==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@adraffy/ens-normalize': 1.8.9
+      '@noble/hashes': 1.1.2
+      '@noble/secp256k1': 1.7.1
+      aes-js: 4.0.0-beta.3
+      tslib: 2.4.0
+      ws: 8.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
+
+  /ethers/6.0.4:
+    resolution: {integrity: sha512-El/9IN2A0ptmxdMQA/Rzn/F80/8OpwHSQ+CkU83y6XIT0fNUz2M2X12VCWzlkmLV0dTGk45gdWR6gxNfyXdylg==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@adraffy/ens-normalize': 1.8.9

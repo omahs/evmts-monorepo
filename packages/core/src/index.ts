@@ -10,13 +10,7 @@ import { Account, Address } from "@ethereumjs/util";
 import { VM } from "@ethereumjs/vm";
 import type { JsonFragment } from "@ethersproject/abi";
 import { defaultAbiCoder as AbiCoder, Interface } from "@ethersproject/abi";
-
-export const keyPair = {
-	secretKey:
-		"0x3cd7232cd6f3fc66a57a6bedc1a8ed6c228fff0a327e169c2bcc5e869ed49511",
-	publicKey:
-		"0x0406cc661590d48ee972944b35ad13ff03c7876eae3fd191e8a2f77311b0a3c6613407b5005e63d7d8d76b89d5f900cde691497688bb281e07a5052ff61edebdc0",
-};
+import { ethers } from "ethers";
 
 const common = new Common({
 	chain: Chain.Rinkeby,
@@ -223,22 +217,12 @@ export const run = async (
 		// evm?: EVMInterface
 	});
 
-	console.log("creating a new account");
-	const accountPk = Buffer.from(
-		"e331b6d69882b4cb4ea581d88e0b604039a3de5967688d3dcffdd2270c0fd109",
-		"hex",
-	);
-	const accountAddress = Address.fromPrivateKey(accountPk);
-	console.log("Account: ", accountAddress.toString());
+	const wallet = ethers.Wallet.createRandom();
 
-	console.log("sending account eth...", accountAddress.toString());
-	await insertAccount(vm, accountAddress);
-
-	console.log("deploying contract");
 	const contractAddress = await deployContract(
 		vm,
-		accountPk,
-		Buffer.from(bytecode.object),
+		Buffer.from(wallet.privateKey.slice(2), "hex"),
+		Buffer.from(bytecode.object.slice(2), "hex"),
 	);
 
 	console.log("Contract address:", contractAddress.toString());
@@ -246,10 +230,11 @@ export const run = async (
 	console.log("Creating sig hash");
 	const sigHash = new Interface(abi).getSighash("run");
 
+	console.log({ sigHash });
 	const result = await vm.evm.runCall({
 		to: contractAddress,
-		caller: accountAddress,
-		origin: accountAddress,
+		caller: wallet.address,
+		origin: wallet.address,
 		data: Buffer.from(sigHash.slice(2), "hex"),
 		block,
 	});
