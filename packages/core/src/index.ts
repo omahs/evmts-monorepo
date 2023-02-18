@@ -17,7 +17,7 @@ const common = new Common({
 	hardfork: Hardfork.Istanbul,
 });
 const block = Block.fromBlockData(
-	{ header: { extraData: Buffer.alloc(97),  } },
+	{ header: { extraData: Buffer.alloc(97), baseFeePerGas: BigInt(0) } },
 	{ common },
 );
 
@@ -244,6 +244,8 @@ export const run = async (
 		data: Buffer.from(sigHash.slice(2), "hex"),
 		block,
 	});
+
+	console.log({result})
 
 	// turn it into op codes
 	// run it in the evm

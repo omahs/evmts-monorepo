@@ -14,6 +14,7 @@ export const Pure = () => {
       return run(PureQuery, { num1, num2 });
     }
   );
+  console.log({ data, error, isLoading });
   return (
     <div>
       <div>Testing a pure query</div>
