@@ -11,7 +11,7 @@ export const Pure = () => {
   const { data, error, isLoading } = useQuery(
     [PureQuery.id, num1, num2],
     async () => {
-      return run(PureQuery, { num1, num2 });
+      return run(PureQuery, [ num1, num2 ]);
     }
   );
   console.log({ data, error, isLoading });

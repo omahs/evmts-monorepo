@@ -42,22 +42,7 @@ type TransactionsData =
 	| AccessListEIP2930TxData
 	| FeeMarketEIP1559TxData;
 
-export const encodeFunction = (
-	method: string,
-	params?: {
-		types: any[];
-		values: unknown[];
-	},
-): string => {
-	const parameters = params?.types ?? [];
-	const methodWithParameters = `function ${method}(${parameters.join(",")})`;
-	const signatureHash = new Interface([methodWithParameters]).getSighash(
-		method,
-	);
-	const encodedArgs = AbiCoder.encode(parameters, params?.values ?? []);
-
-	return signatureHash + encodedArgs.slice(2);
-};
+;
 
 export const encodeDeployment = (
 	bytecode: string,
@@ -232,18 +217,32 @@ export const run = async (
 	);
 
 	console.log("Contract address:", contractAddress.toString());
-
 	console.log("Creating sig hash");
 	const sigHash = new Interface(abi
 ).getSighash("run");
 
 	console.log({ sigHash });
-
+	const encodeFunction = (
+		params?: {
+			types: any[];
+			values: unknown[];
+		},
+	): string => {
+		const parameters = params?.types ?? [];
+		const encodedArgs = AbiCoder.encode(parameters, params?.values ?? []);
+		console.log({encodedArgs, parameters})
+		return sigHash + encodedArgs.slice(2);
+	}
+	const data = Buffer.from(encodeFunction({
+			types: ["uint256", "uint256"],
+			values: args
+		}).slice(2), 'hex')
+		console.log({data, sigHash})
 	const result = await vm.evm.runCall({
 		to: contractAddress,
 		caller: address,
 		origin: address,
-		data: Buffer.from(sigHash.slice(2), "hex"),
+		data ,
 		block,
 	});
 
