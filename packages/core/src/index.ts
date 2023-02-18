@@ -217,7 +217,12 @@ export const run = async (
 		// evm?: EVMInterface
 	});
 
+	// TODO remove this using it for convenience
 	const wallet = ethers.Wallet.createRandom();
+
+	const address = Address.fromPrivateKey(Buffer.from(wallet.privateKey.slice(2), "hex"));
+
+	await insertAccount(vm, address)
 
 	const contractAddress = await deployContract(
 		vm,
