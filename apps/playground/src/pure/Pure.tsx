@@ -8,9 +8,12 @@ import PureQuery from "./PureQuery.t.sol";
 export const Pure = () => {
   const [num1, setNum1] = useState(0);
   const [num2, setNum2] = useState(0);
-  const { data } = useQuery([PureQuery.id, num1, num2], async () => {
-    return run(PureQuery, { num1, num2 });
-  });
+  const { data, error, isLoading } = useQuery(
+    [PureQuery.id, num1, num2],
+    async () => {
+      return run(PureQuery, { num1, num2 });
+    }
+  );
   return (
     <div>
       <div>Testing a pure query</div>
@@ -30,6 +33,8 @@ export const Pure = () => {
           onChange={(e) => setNum2(Number(e.target.value))}
         />{" "}
         =<div>{data}</div>
+        {error && <div>{JSON.stringify(error)}</div>}
+        {isLoading && <div>Loading...</div>}
       </div>
     </div>
   );
