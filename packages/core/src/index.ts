@@ -234,9 +234,11 @@ export const run = async (
 	console.log("Contract address:", contractAddress.toString());
 
 	console.log("Creating sig hash");
-	const sigHash = new Interface(abi).getSighash("run");
+	const sigHash = new Interface(abi
+).getSighash("run");
 
 	console.log({ sigHash });
+
 	const result = await vm.evm.runCall({
 		to: contractAddress,
 		caller: address,
@@ -250,5 +252,5 @@ export const run = async (
 	// turn it into op codes
 	// run it in the evm
 	// return the result
-	return result.execResult.returnValue.toString();
+	return result.execResult.returnValue
 };
