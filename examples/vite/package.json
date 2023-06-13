@@ -21,7 +21,7 @@
   "dependencies": {
     "@babel/core": "^7.22.1",
     "@evmts/bundler": "workspace:^",
-    "@evmts/core": "workspace:^0.0.3",
+    "@evmts/core": "workspace:^0.0.4",
     "@openzeppelin/contracts": "^4.9.0",
     "@tanstack/query-core": "^4.29.11",
     "@tanstack/react-query": "^4.29.12",
@@ -41,8 +41,8 @@
   "devDependencies": {
     "@babel/plugin-syntax-flow": "^7.21.4",
     "@babel/plugin-transform-react-jsx": "^7.22.3",
-    "@evmts/ts-plugin": "workspace:^0.0.0",
-    "@evmts/vite-plugin": "workspace:^0.0.1",
+    "@evmts/ts-plugin": "workspace:^0.0.1",
+    "@evmts/vite-plugin": "workspace:^0.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@types/node": "^20.2.5",

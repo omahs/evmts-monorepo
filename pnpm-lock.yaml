@@ -470,7 +470,7 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1(@types/node@20.3.0)(ethers@5.7.2)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
       '@evmts/core':
-        specifier: workspace:^0.0.3
+        specifier: workspace:^0.0.4
         version: link:../../core
       '@rainbow-me/rainbowkit':
         specifier: ^1.0.1
@@ -604,7 +604,7 @@ importers:
         specifier: workspace:^
         version: link:../../bundlers/bundler
       '@evmts/core':
-        specifier: workspace:^0.0.3
+        specifier: workspace:^0.0.4
         version: link:../../core
       '@openzeppelin/contracts':
         specifier: ^4.9.0
@@ -659,10 +659,10 @@ importers:
         specifier: ^7.22.3
         version: 7.22.3(@babel/core@7.22.1)
       '@evmts/ts-plugin':
-        specifier: workspace:^0.0.0
+        specifier: workspace:^0.0.1
         version: link:../../lsp/ts-plugin
       '@evmts/vite-plugin':
-        specifier: workspace:^0.0.1
+        specifier: workspace:^0.0.2
         version: link:../../bundlers/vite-plugin
       '@testing-library/jest-dom':
         specifier: ^5.16.5
@@ -780,7 +780,7 @@ importers:
         specifier: ^7.20.12
         version: 7.21.8
       '@evmts/core':
-        specifier: workspace:^0.0.3
+        specifier: workspace:^0.0.4
         version: link:../../core
       '@tanstack/query-core':
         specifier: ^4.24.6
@@ -829,10 +829,10 @@ importers:
         specifier: ^7.20.13
         version: 7.21.0(@babel/core@7.21.8)
       '@evmts/rollup-plugin-legacy':
-        specifier: workspace:^0.0.1
+        specifier: workspace:^0.0.2
         version: link:../rollup-plugin-legacy
       '@evmts/ts-plugin':
-        specifier: workspace:^0.0.0
+        specifier: workspace:^0.0.1
         version: link:../../lsp/ts-plugin
       '@testing-library/jest-dom':
         specifier: ^5.16.5
@@ -895,7 +895,7 @@ importers:
         specifier: ^7.21.4
         version: 7.21.4
       '@evmts/bundler-legacy':
-        specifier: workspace:^0.0.1
+        specifier: workspace:^0.0.2
         version: link:../solidity-resolver-legacy
       '@rollup/pluginutils':
         specifier: ^5.0.2
